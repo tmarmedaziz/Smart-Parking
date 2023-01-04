@@ -64,7 +64,7 @@ class _ParkingSlotState extends State<ParkingSlot> {
                   itemCount: slots.length,
                   itemBuilder: (context, index) {
                     return SlotStatus(
-                      slotusername: slots[index].slotusername,
+                      slotusername: slots[index].slotname,
                       availability: slots[index].availability,
                       id: slots[index].id,
                     );
