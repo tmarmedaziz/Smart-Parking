@@ -64,7 +64,7 @@ class _ParkingSlotState extends State<ParkingSlot> {
                   itemCount: slots.length,
                   itemBuilder: (context, index) {
                     return SlotStatus(
-                      slotusername: slots[index].slotname,
+                      slotname: slots[index].slotname,
                       availability: slots[index].availability,
                       id: slots[index].id,
                     );
@@ -85,13 +85,13 @@ class ParkingSlotView extends GetView<ParkingSlotController> {
 }
 
 class SlotStatus extends StatefulWidget {
-  final String slotusername;
+  final String slotname;
   final int availability;
   final String id;
 
   const SlotStatus(
       {Key? key,
-        required this.slotusername,
+        required this.slotname,
         required this.availability,
         required this.id})
       : super(key: key);
