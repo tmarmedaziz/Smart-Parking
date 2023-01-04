@@ -1,26 +1,26 @@
 class AvailableSlots {
 
-  final String slotusername;
+  final String slotname;
   final int availability;
   final String id;
 
   AvailableSlots({
 
-    required this.slotusername,
+    required this.slotname,
     required this.availability,
     required this.id,
   });
 
   factory AvailableSlots.fromJson(Map<String, dynamic> json) {
     return AvailableSlots(
-      slotusername: json.containsKey("message")
-          ? json["message"].containsKey("username")
+      slotname: json.containsKey("message")
+          ? json["message"].containsKey("slotname")
               ? json["message"]["username"]
               : ""
           : "",
       availability: json.containsKey("message")
-          ? json["message"].containsKey("permissions")
-              ? json["message"]["permissions"]
+          ? json["message"].containsKey("availability")
+              ? json["message"]["availability"]
               : -1
           : -1,
       id: json.containsKey("message")
