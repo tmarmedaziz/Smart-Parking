@@ -1,0 +1,44 @@
+name: frontend
+description: A new Flutter application.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.3
+  flutter_circle_color_picker: ^0.3.0
+  flutter_svg: ^0.22.0
+  font_awesome_flutter: ^9.1.0
+  get: ^4.1.4
+  get_storage: ^2.0.2
+  google_fonts: ^2.1.0
+  http: ^0.13.3
+  lottie: ^1.0.1
+  adaptive_dialog: ^1.2.0
+  flutter_secure_storage: ^5.0.2
+  pkce: ^1.0.0+1
+  random_string: ^2.3.1
+  dio: ^4.0.4
+  get_it: ^7.2.0
+  the_validator: ^2.0.0
+  responsive_sizer: ^2.0.1
+  another_flushbar:
+  google_maps_flutter: ^2.1.1
+  geolocator: ^8.0.1
+  maps_toolkit: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/lottie/
