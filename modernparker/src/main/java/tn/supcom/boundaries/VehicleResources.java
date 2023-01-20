@@ -51,13 +51,13 @@ public class VehicleResources {
     @Path("/{userid}")
     public Response addVehicle(@PathParam("userid") String userId, Vehicle vehicle){
 
-        try {
-            User user = userRepository.findByEmail(userId).get();
-            System.out.println(user.toString());
-            vehicle.setUserId(user.getEmail());
-            service.addVehicle(vehicle);
-            return Response.ok(vehicle.toString()).build();
-        } catch (UserAlreadyExistsException e){return Response.status(400, e.getMessage()).build();}
+//        try {
+        User user = userRepository.findByEmail(userId).get();
+        System.out.println(user.toString());
+        vehicle.setUserId(user.getEmail());
+        vehicleRepository.save(vehicle);
+        return Response.ok(vehicle.toString()).build();
+//        } catch (UserAlreadyExistsException e){return Response.status(400, e.getMessage()).build();}
     }
 
     /**

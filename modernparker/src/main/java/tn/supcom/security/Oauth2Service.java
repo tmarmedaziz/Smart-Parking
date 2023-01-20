@@ -55,7 +55,7 @@ public class Oauth2Service {
         userToken.add(refreshToken);
         System.out.println(userToken.toString());
         userTokenRepository.save(userToken);
-        final Oauth2Response response = Oauth2Response.of(accessToken, refreshToken, EXPIRE_IN);
+        final Oauth2Response response = Oauth2Response.of(accessToken, refreshToken, EXPIRE_IN, user.getEmail());
         return response;
     }
 
@@ -80,7 +80,7 @@ public class Oauth2Service {
         final String jwt = UserJWT.createToken(user, token, EXPIRES);
         AccessToken accessToken = new AccessToken(token.get(), jwt, EXPIRES);
         RefreshToken refreshToken = userToken.update(accessToken, request.getRefreshToken(), userTokenRepository);
-        final Oauth2Response response = Oauth2Response.of(accessToken, refreshToken, EXPIRE_IN);
+        final Oauth2Response response = Oauth2Response.of(accessToken, refreshToken, EXPIRE_IN, user.getEmail());
 
         return response;
     }

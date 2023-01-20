@@ -16,6 +16,8 @@ import javax.ejb.Singleton;
 import javax.inject.Inject;
 import javax.net.ssl.SSLSocketFactory;
 import javax.ws.rs.core.Response;
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Optional;
 
@@ -134,7 +136,17 @@ public class MqttConnection {
                         Optional<User> user = userRepository.findByEmail(userId);
                         if (user.isPresent()){
 //                            System.out.println(user.get().toString());
-                            sendMessage(client, "1", "clients/clientauth");
+                            List<ParkingSlot> parkingSlots = parkingSlotRepository.findByParkingId(1);
+                            Dictionary dictionary = new Hashtable();
+                            for(ParkingSlot slot: parkingSlots){
+                                if (slot.getState().equals(SlotState.EMPTY)){
+                                    dictionary.put(slot.getId(), slot.getState());}
+                            }
+                            if (dictionary.isEmpty()){
+                                System.out.println("All slots are full");
+                                sendMessage(client, "0", "clients/clientauth");}
+                            else {
+                            sendMessage(client, "1", "clients/clientauth");}
                         }else {
                             System.out.println("this user do not exist");
                             sendMessage(client, "0", "clients/clientauth");
