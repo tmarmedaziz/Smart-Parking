@@ -2,7 +2,8 @@
  class AuthTokens {
 String  accessToken ;
  String refreshToken ;
- AuthTokens(this.accessToken,this.refreshToken);
+ String userId;
+ AuthTokens(this.accessToken,this.refreshToken,this.userId);
 
 
 }

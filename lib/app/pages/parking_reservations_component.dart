@@ -25,7 +25,8 @@ Widget dashbord2Component(BuildContext context , Color color, Reservation  reser
 
                     Navigator.pushNamed(context,'dashboard',arguments:{
                       'accessToken':resourceApi.accessToken,
-                      'refreshToken':resourceApi.refreshToken
+                      'refreshToken':resourceApi.refreshToken,
+                      'userId': resourceApi.userId
                     });
                   },
                   child: Column(

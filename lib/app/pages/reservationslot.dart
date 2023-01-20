@@ -18,8 +18,8 @@ class _ReserveSlotState extends State<ReserveSlot> {
   @override
   Widget build(BuildContext context) {
     final arg = ModalRoute.of(context)!.settings.arguments as Map;
-   AuthTokens authTokens=new AuthTokens(arg['accessToken'], arg['refreshToken']);
-   ResourceApi resourceApi=ResourceApi(authTokens.accessToken,authTokens.refreshToken);
+    AuthTokens authTokens=new AuthTokens(arg['accessToken'], arg['refreshToken'],arg['userId']);
+    ResourceApi resourceApi=ResourceApi(authTokens.accessToken,authTokens.refreshToken,authTokens.userId);
     final height=MediaQuery.of(context).size.height ;
     final width=MediaQuery.of(context).size.width ;
     return Scaffold(

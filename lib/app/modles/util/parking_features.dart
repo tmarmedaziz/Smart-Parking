@@ -1,12 +1,19 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:modern_parker/app/modles/util/baseapi.dart';
 import '../reservation.dart';
  import 'package:http/http.dart' as http;
  import 'dart:convert' as convert;
- class ResourceApi  extends BaseAPI{
+import 'package:modern_parker/app/modles/Tokens.dart';
+
+class ResourceApi  extends BaseAPI{
  String  accessToken  ;
  String refreshToken ;
- ResourceApi(this.accessToken,this.refreshToken);
+ String userId;
+ ResourceApi(this.accessToken,this.refreshToken, this.userId);
+
 //get request
    Future<List> Getallreservations()  async{ //Get all reservations GET (ADMIN)
      var response  =await http.get(Uri.parse(super.reservationpath),headers:super.createProtectedHeader(accessToken))  ;
@@ -57,8 +64,10 @@ import '../reservation.dart';
 
    }
 //get request
-   Future<List> getReservationsByIdUser() async{ //Get user reservations
-     var response  =await http.get(Uri.parse(super.reservationsbyuser),headers:super.createProtectedHeader(accessToken)) ;
+   Future<List> getReservationsByIdUser(String userId) async{
+     print(userId);
+     var reservationsbyuser = "https://api.modernparker.me:8443/modernparker-1.0/api/reservation/user/$userId";
+     var response  = await http.get(Uri.parse(reservationsbyuser),headers:super.createProtectedHeader(accessToken)) ;
      if(response.statusCode==200){
        var jsonResponse = convert.jsonDecode(response.body) as List ;
        List responseList=[] ;
@@ -74,15 +83,20 @@ import '../reservation.dart';
    }
 
    //addvehicule
-   Future addvehicule(  String  vehicleNumber , String  vehicleCategory, String vehicleDescription) async {
-     var body = jsonEncode({
-       'vehicleNumber': vehicleNumber,
-       'vehicleCategory': vehicleCategory,
-       'vehicleDescription': vehicleDescription,
-     });
-     var   response = await http.post(Uri.parse(super.addvehiculepath), headers:super.createProtectedHeader(accessToken), body: body);
-     return response ;
-   }
+  Future<http.Response> addvehicule(String vehicleNumber, String vehicleCategory, String vehicleDescription) async {
+    var path = addvehiculepath + userId;
+    var body = jsonEncode({
+      'vehicleNumber': vehicleNumber,
+      'vehicleCategory': vehicleCategory,
+      'vehicleDescription': vehicleDescription,
+    });
+    var response = await http.post(Uri.parse(path),headers: super.createProtectedHeader(accessToken), body: body);
+    return response;
+  }
+  //var response1 = SessionManager().get("userId").then((value) {
+
+  // print("-------------------$body----------------");
+  //var uri = super.addvehiculepath + value;
    //addslotreservation
    Future reservationslot(  String  id , String  reservation) async {
      var body = jsonEncode({

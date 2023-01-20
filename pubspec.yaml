@@ -47,6 +47,7 @@ dependencies:
   responsive_sizer: ^2.0.1
   another_flushbar:
   google_fonts: ^2.1.0
+  flutter_session_manager: ^1.0.3
   #flutter_datetime_picker: ^2.2.0
 
 dev_dependencies:

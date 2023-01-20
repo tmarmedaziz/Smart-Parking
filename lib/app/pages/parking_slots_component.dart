@@ -24,7 +24,8 @@ Widget dashbordComponent(BuildContext context , Color color, Slot  slot, Resourc
   onPressed:(){
   Navigator.pushNamed(context,'Addvehicule',arguments:{
   'accessToken':resourceApi.accessToken,
-  'refreshToken':resourceApi.refreshToken
+  'refreshToken':resourceApi.refreshToken,
+    'userId': resourceApi.userId
   });
   },
   child: Column(

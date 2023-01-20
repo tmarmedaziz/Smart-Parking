@@ -1,9 +1,7 @@
 import 'dart:convert';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:modern_parker/app/modles/util/baseapi.dart';
-
-
-
 class AuthAPI extends BaseAPI {
   //signup
   Future signUp(  String  email , String  forname , String surname , String password) async {
@@ -32,19 +30,12 @@ class AuthAPI extends BaseAPI {
       'id': id,
       'reservation': reservation,
     });
+    //var uId;
+    //dynamic user = SessionManager().get("userId").then((value) => uId=value);
     var   response = await http.post(Uri.parse(super.reserveslotpath), headers:super.headers, body: body);
     return response ;
   }
-  //addvehicule
-  Future addvehicule(  String  vehicleNumber , String  vehicleCategory, String vehicleDescription) async {
-    var body = jsonEncode({
-      'vehicleNumber': vehicleNumber,
-      'vehicleCategory': vehicleCategory,
-      'vehicleDescription': vehicleDescription,
-    });
-    var   response = await http.post(Uri.parse(super.addvehiculepath), headers:super.headers, body: body);
-    return response ;
-  }
+
   //Booking history
   Future<http.Response> BookinghistoryPage(String email, String password) async {
     var body = {'grand_type':'password','email': email, 'password': password};

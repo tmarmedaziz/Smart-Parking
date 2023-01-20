@@ -18,17 +18,19 @@ class _Dashbord2State extends State<Dashbord2> {
     final arg = ModalRoute.of(context)!.settings.arguments as Map   ;
     print("------------------refreshToken----------------------");
     print(arg['refreshToken']);
-    AuthTokens authTokens=new AuthTokens(arg['accessToken'], arg['refreshToken']);
-    ResourceApi resourceApi=ResourceApi(authTokens.accessToken,authTokens.refreshToken);
+    AuthTokens authTokens=new AuthTokens(arg['accessToken'], arg['refreshToken'],arg['userId']);
+    ResourceApi resourceApi=ResourceApi(authTokens.accessToken,authTokens.refreshToken,authTokens.userId);
     print("------------------accessToken----------------------");
-
     print(arg['accessToken']);
+    print("------------------userId----------------------");
+    //print(arg['userId']);
+
     return Scaffold(
         backgroundColor: Colors.white,
 
         body:
         FutureBuilder(
-            future: resourceApi.getReservationsByIdUser(),
+            future: resourceApi.getReservationsByIdUser(arg['userId']),
             builder:  (context,snapshot  ) {
               print(snapshot);
               print('here');

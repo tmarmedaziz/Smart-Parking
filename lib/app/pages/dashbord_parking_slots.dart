@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:modern_parker/app/modles/Tokens.dart';
 import 'package:modern_parker/app/pages/parking_slots_component.dart';
 
@@ -19,12 +20,23 @@ class _DashbordState extends State<Dashbord> {
     final height=MediaQuery.of(context).size.height;
     final width=MediaQuery.of(context).size.width;
     final arg = ModalRoute.of(context)!.settings.arguments as Map   ;
+    //var sessionmanager = SessionManager();
+   // await sessionmanager.set("userId", arg['userId']);
+
 
     print("--------------------refreshToken------------------------");
     print(arg['refreshToken']);
-    AuthTokens authTokens=new AuthTokens(arg['accessToken'], arg['refreshToken']);
-    ResourceApi resourceApi=ResourceApi(authTokens.accessToken,authTokens.refreshToken);
-    print("--------------------accessToken------------------------");
+    AuthTokens authTokens=new AuthTokens(arg['accessToken'], arg['refreshToken'],arg['userId']);
+    ResourceApi resourceApi=ResourceApi(authTokens.accessToken,authTokens.refreshToken,authTokens.userId);
+    print("------------------accessToken----------------------");
+    print(arg['accessToken']);
+    print("------------------userId----------------------");
+    print(arg['userId']);
+    dynamic userId = SessionManager().get("userId").then((value) => print("--------$value--------"));
+
+    print("-------------------___________________________---------------------------");
+    print(userId);
+    print("-------------------___________________________---------------------------");
 
     print(arg['accessToken']);
     return Scaffold(

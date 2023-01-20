@@ -96,9 +96,9 @@ class _BookinghistoryPageState extends State<BookinghistoryPage> {
                                       print(value.statusCode);
                                       if(value.statusCode==200){
                                         var data =jsonDecode(value.body) ;
-                                        AuthTokens authtoken= AuthTokens(data['accessToken'], data['refreshToken'])  ;
+                                        AuthTokens authtoken= AuthTokens(data['accessToken'], data['refreshToken'], data['userId'])  ;
                                         Navigator.pushNamed(context,'dashboard2',    arguments: {"accessToken":data['accessToken'],
-                                          "refreshToken":data['refreshToken']
+                                          "refreshToken":data['refreshToken'],"userId":data['userId']
                                         },
                                         );
 

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:modern_parker/app/modles/Tokens.dart';
 import '../modles/util/authApi.dart';
 import '../widgets/input_decoration.dart';
@@ -18,7 +19,7 @@ class _LoginState extends State<Login> {
    String password="";
    @override
   Widget build(BuildContext context) {
-
+    var sessionManager = SessionManager();
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -86,14 +87,15 @@ class _LoginState extends State<Login> {
                                   onPressed: () {
                                     print(email) ;
                                     print(password);
-                                    _authAPI.login(email, password).then((value){
+                                    _authAPI.login(email, password).then((value) async {
                                       print(value);
                                       print(value.statusCode);
                                       if(value.statusCode==200){
                                         var data =jsonDecode(value.body) ;
-                                        AuthTokens authtoken= AuthTokens(data['accessToken'], data['refreshToken'])  ;
+                                        AuthTokens authtoken= AuthTokens(data['accessToken'], data['refreshToken'],data['userId'])  ;
+                                        await sessionManager.set("userId", data['userId']);
                                         Navigator.pushNamed(context,'dashboard',    arguments: {"accessToken":data['accessToken'],
-                                          "refreshToken":data['refreshToken']
+                                          "refreshToken":data['refreshToken'],"userId":data['userId']
                                         },
                                         );
 
@@ -101,7 +103,6 @@ class _LoginState extends State<Login> {
                                         showDialog<void>(
                                           context: context,
                                           barrierDismissible: false,
-                                          // user must tap button!
                                           builder: (BuildContext context) {
 
 
