@@ -15,7 +15,6 @@ var reservationpath = api + "/reservation/";
 //slot path
   var slotspath = "https://api.modernparker.me:8443/modernparker-1.0/api/parking/allemptyslots/1";
 //reserveslot path
-  //var reserveslotpath = "https://api.modernparker.me:8443/modernparker-1.0/api/reservation/add/test00@supcom.tn/1/6";
   var addreserveslotpath="https://api.modernparker.me:8443/modernparker-1.0/api/reservation/add/";
 //addvehicule path
   //dynamic user = SessionManager().get("userId").then((value) => print("$value"));
@@ -23,7 +22,6 @@ var reservationpath = api + "/reservation/";
   var addvehiculepath = "https://api.modernparker.me:8443/modernparker-1.0/api/vehicle/";
 //
 
-  //var reservationsbyuser = "https://api.modernparker.me:8443/modernparker-1.0/api/reservation/user/$userId";
 // headers
 Map<String,String> headers = {
   "Content-Type": "application/json; charset=UTF-8" };

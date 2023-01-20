@@ -37,7 +37,7 @@ Widget dashbord2Component(BuildContext context , Color color, Reservation  reser
                         style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 22.0
+                            fontSize: 10.0
                         ),
                       ),
                       Text(
@@ -45,7 +45,7 @@ Widget dashbord2Component(BuildContext context , Color color, Reservation  reser
                         style: const  TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 22.0
+                            fontSize: 10.0
                         ),
                       ),
                       Text(
@@ -53,14 +53,29 @@ Widget dashbord2Component(BuildContext context , Color color, Reservation  reser
                         style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 22.0
+                            fontSize: 10.0
                         ),
                       ),
                       Text(
                         "${reservation.slotId}",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 22
+                            fontSize: 10
+                        ),
+                      ),
+                      Text(
+                        "Timestamp: ",
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10.0
+                        ),
+                      ),
+                      Text(
+                        "${reservation.reservation}",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10
                         ),
                       ),
                     ],

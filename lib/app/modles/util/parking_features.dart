@@ -99,7 +99,7 @@ class ResourceApi  extends BaseAPI{
   //var uri = super.addvehiculepath + value;
    //addslotreservation
    Future reservationslot(  String  id , String  reservation) async {
-     var reservationpath = addreserveslotpath + userId + "/1/6";
+     var reservationpath = addreserveslotpath + userId + "/1/$id";
      var body = jsonEncode({
        'id': id,
        'reservation': reservation,
