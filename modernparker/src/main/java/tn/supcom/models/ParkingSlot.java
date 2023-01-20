@@ -4,10 +4,11 @@ import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Entity;
 import jakarta.nosql.mapping.Id;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-class ParkingSlot{
+public class ParkingSlot implements Serializable {
     @Id
     private Integer id;
 
@@ -15,15 +16,23 @@ class ParkingSlot{
     private String slotDescription;
 
     @Column
-    private String state;
+    private SensorState sensorState;
 
-    public ParkingSlot(Integer id, String slotDescription, String state) {
-        this.id = id;
-        this.slotDescription = slotDescription;
-        this.state = state;
-    }
+    @Column
+    private SlotState state;
+
+    @Column
+    private Integer parkingId;
 
     public ParkingSlot(){}
+
+    public ParkingSlot(Integer id, String slotDescription, SensorState sensorState, SlotState state, Integer parkingId) {
+        this.id = id;
+        this.slotDescription = slotDescription;
+        this.sensorState = sensorState;
+        this.state = state;
+        this.parkingId = parkingId;
+    }
 
     public Integer getId() {
         return id;
@@ -41,12 +50,28 @@ class ParkingSlot{
         this.slotDescription = slotDescription;
     }
 
-    public String getState() {
+    public SensorState getSensorState() {
+        return sensorState;
+    }
+
+    public void setSensorState(SensorState sensorState) {
+        this.sensorState = sensorState;
+    }
+
+    public SlotState getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(SlotState state) {
         this.state = state;
+    }
+
+    public Integer getParkingId() {
+        return parkingId;
+    }
+
+    public void setParkingId(Integer parkingId) {
+        this.parkingId = parkingId;
     }
 
     @Override
@@ -54,12 +79,12 @@ class ParkingSlot{
         if (this == o) return true;
         if (!(o instanceof ParkingSlot)) return false;
         ParkingSlot that = (ParkingSlot) o;
-        return id.equals(that.id) && slotDescription.equals(that.slotDescription) && state.equals(that.state);
+        return id.equals(that.id) && slotDescription.equals(that.slotDescription) && sensorState == that.sensorState && state == that.state && parkingId.equals(that.parkingId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, slotDescription, state);
+        return Objects.hash(id, slotDescription, sensorState, state, parkingId);
     }
 
     @Override
@@ -67,7 +92,9 @@ class ParkingSlot{
         return "ParkingSlot{" +
                 "id=" + id +
                 ", slotDescription='" + slotDescription + '\'' +
-                ", state='" + state + '\'' +
+                ", sensorState=" + sensorState +
+                ", state=" + state +
+                ", parkingId=" + parkingId +
                 '}';
     }
 }

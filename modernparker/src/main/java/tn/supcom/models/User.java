@@ -125,7 +125,7 @@ public class User   implements Serializable {
     @Override
     public String toString() {
         return "{" +
-                ", surname='" + surname + '\'' +
+                " surname='" + surname + '\'' +
                 ", forname='" + forname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

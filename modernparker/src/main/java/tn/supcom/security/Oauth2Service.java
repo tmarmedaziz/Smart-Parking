@@ -53,6 +53,7 @@ public class Oauth2Service {
        //here the error
         RefreshToken refreshToken = new RefreshToken(Token.generate(), accessToken);
         userToken.add(refreshToken);
+        System.out.println(userToken.toString());
         userTokenRepository.save(userToken);
         final Oauth2Response response = Oauth2Response.of(accessToken, refreshToken, EXPIRE_IN);
         return response;

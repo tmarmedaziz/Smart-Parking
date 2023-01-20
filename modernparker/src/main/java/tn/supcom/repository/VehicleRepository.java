@@ -8,5 +8,6 @@ import java.util.Optional;
 
 public interface VehicleRepository extends Repository<Vehicle, Integer> {
     Optional<Vehicle> findByVehicleNumber(String vehicleNumber);
+    List<Vehicle> findByUserId(String userId);
     List<Vehicle> findAll();
 }

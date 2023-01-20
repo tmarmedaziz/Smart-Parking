@@ -70,6 +70,7 @@ public class AuthenticationFilter implements HttpAuthenticationMechanism {
             if (optionalUserJWT.isPresent()) {
                 final UserJWT userJWT = optionalUserJWT.get();
                 System.out.println(userJWT.getRoles());
+                System.out.println(userJWT.getUser());
 
                 return httpMessageContext.notifyContainerAboutLogin(userJWT.getUser(), userJWT.getRoles());
             } else {

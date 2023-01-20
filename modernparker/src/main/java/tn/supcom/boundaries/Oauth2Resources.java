@@ -19,7 +19,11 @@ public class Oauth2Resources {
     @Inject
     private Oauth2Service service;
 
-
+    /**
+     *
+     * @param request
+     * @return token and refresh token for the authorization
+     */
     @POST
     @Path("token")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)

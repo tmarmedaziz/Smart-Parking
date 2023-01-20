@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface UserRepository extends Repository<User ,String> {
 
-    Optional <User> findByEmail(String email ) ;
+    Optional<User> findByEmail(String email ) ;
     List<User> findAll() ;
 
 }

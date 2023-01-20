@@ -8,6 +8,7 @@ import tn.supcom.filters.Secured;
 import tn.supcom.models.User;
 import tn.supcom.services.UserServiceImpl;
 
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -25,6 +26,28 @@ public class UserResources {
     @Inject
     private UserServiceImpl userService ;
 
+    /**
+     *
+     * @param
+     * @return Response entity
+     * @throws  UserAlreadyExistsException
+     * @apiNote : used to  create admin account
+     */
+
+    @GET
+    @Path("/find")
+    @Secured
+    @RolesAllowed("ADMIN")
+    public Response findUsers(){
+        System.out.println("find");
+        try {
+            return Response.ok(userService.findall()).build() ;
+        } catch (UserAlreadyExistsException e){
+            return  Response.status(400, e.getMessage()).build();
+        }
+
+
+    }
 
     /**
      *
@@ -37,6 +60,7 @@ public class UserResources {
     @POST
     @Path("/signup")
     public Response createUser(@Valid User user){
+        System.out.println("signup");
          try {
              return Response.ok(userService.createUser(user)).build() ;
          } catch (UserAlreadyExistsException e){

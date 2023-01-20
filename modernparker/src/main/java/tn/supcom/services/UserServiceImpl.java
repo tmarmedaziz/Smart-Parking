@@ -10,6 +10,8 @@ import tn.supcom.util.Argon2Utility;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.List;
+import java.util.stream.Stream;
 
 @ApplicationScoped
 public class UserServiceImpl  implements  UserService{
@@ -39,7 +41,9 @@ public class UserServiceImpl  implements  UserService{
 
 
 
-
+    public List<User> findall(){
+        return userRepository.findAll();
+    }
 
     /**
      *
