@@ -16,10 +16,11 @@ var reservationpath = api + "/reservation/";
 //slot path
   var slotspath = "https://api.modernparker.me:8443/modernparker-1.0/api/parking/allemptyslots/1";
 //reserveslot path
-  var reserveslotpath = "https://api.modernparker.me:8443/modernparker-1.0/api/reservation/add/test9@supcom.tn/1/1";
+  var reserveslotpath = "https://api.modernparker.me:8443/modernparker-1.0/api/reservation/add/test00@supcom.tn/1/6";
 //addvehicule path
-  var addvehiculepath = "https://api.modernparker.me:8443/modernparker-1.0/api/vehicle/karahba";
-
+  var addvehiculepath = "https://api.modernparker.me:8443/modernparker-1.0/api/vehicle/test00@supcom.tn";
+//
+  var reservationsbyuser = "https://api.modernparker.me:8443/modernparker-1.0/api/reservation/user/test00@supcom.tn";
 // headers
 Map<String,String> headers = {
   "Content-Type": "application/json; charset=UTF-8" };

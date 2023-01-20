@@ -28,7 +28,7 @@ class _Dashbord2State extends State<Dashbord2> {
 
         body:
         FutureBuilder(
-            future: resourceApi.Getallreservations(),
+            future: resourceApi.getReservationsByIdUser(),
             builder:  (context,snapshot  ) {
               print(snapshot);
               print('here');

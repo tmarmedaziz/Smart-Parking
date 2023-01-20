@@ -132,7 +132,12 @@ class _AddvehiculeState extends State<Addvehicule> {
                                     else {
                                       resourceApi.addvehicule(vehicleNumber, vehicleCategory, vehicleDescription).then((value) => print(value.body));
                                       //Navigator.pop(context);
-                                      Navigator.of(context).pushNamed('ReserveSlot');
+                                     // Navigator.of(context).pushNamed('ReserveSlot');
+                                      Navigator.pushNamed(
+                                          context, 'ReserveSlot', arguments: {
+                                        'accessToken': resourceApi.accessToken,
+                                        'refreshToken': resourceApi.refreshToken
+                                      });
                                     }
                                   },
                                   child: const Text(

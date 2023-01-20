@@ -56,15 +56,14 @@ import '../reservation.dart';
      }
 
    }
-
 //get request
-   Future<List> getReservationsByIdUser(String email) async{ //Get user reservations
-     var response  =await http.get(Uri.parse(super.reservationpath+"/user/"+email),headers:super.createProtectedHeader(accessToken)) ;
+   Future<List> getReservationsByIdUser() async{ //Get user reservations
+     var response  =await http.get(Uri.parse(super.reservationsbyuser),headers:super.createProtectedHeader(accessToken)) ;
      if(response.statusCode==200){
        var jsonResponse = convert.jsonDecode(response.body) as List ;
        List responseList=[] ;
        jsonResponse.forEach((element) {
-         Reservation reservation = Reservation(element["id"], element["reservation"], element["userId"], element["vehicleId"], element["slotId"]);
+         Reservation reservation = Reservation(element["userId"], element["reservation"], element["id"], element["vehicleId"], element["slotId"]);
          responseList.add(reservation) ;
        });
        return responseList as List ;
@@ -84,7 +83,7 @@ import '../reservation.dart';
      var   response = await http.post(Uri.parse(super.addvehiculepath), headers:super.createProtectedHeader(accessToken), body: body);
      return response ;
    }
-   //reserveslot
+   //addslotreservation
    Future reservationslot(  String  id , String  reservation) async {
      var body = jsonEncode({
        'id': id,

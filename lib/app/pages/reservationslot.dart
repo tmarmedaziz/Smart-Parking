@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:modern_parker/app/modles/Tokens.dart';
+import 'package:modern_parker/app/modles/util/parking_features.dart';
 import '../modles/util/authApi.dart';
 import '../widgets/input_decoration.dart';
 
@@ -10,14 +12,14 @@ class ReserveSlot extends StatefulWidget {
 }
 
 class _ReserveSlotState extends State<ReserveSlot> {
-  AuthAPI _authAPI = AuthAPI();
+  //AuthAPI _authAPI = AuthAPI();
   String id ="" ;
   String reservation ="" ;
   @override
   Widget build(BuildContext context) {
-    //final arg = ModalRoute.of(context)!.settings.arguments as Map;
-   //AuthTokens authTokens=new AuthTokens(arg['accessToken'], arg['refreshToken']);
-  // ResourceApi resourceApi=ResourceApi(authTokens.accessToken,authTokens.refreshToken);
+    final arg = ModalRoute.of(context)!.settings.arguments as Map;
+   AuthTokens authTokens=new AuthTokens(arg['accessToken'], arg['refreshToken']);
+   ResourceApi resourceApi=ResourceApi(authTokens.accessToken,authTokens.refreshToken);
     final height=MediaQuery.of(context).size.height ;
     final width=MediaQuery.of(context).size.width ;
     return Scaffold(
@@ -117,7 +119,7 @@ class _ReserveSlotState extends State<ReserveSlot> {
                                       );
                                     }
                                     else {
-                                      _authAPI.reservationslot(id, reservation).then((value) => print(value.body));
+                                      resourceApi.reservationslot(id, reservation).then((value) => print(value.body));
                                       //Navigator.pop(context);
                                       Navigator.of(context).pushNamed('BookingPage');
                                     }

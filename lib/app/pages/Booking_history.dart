@@ -64,6 +64,7 @@ class _BookinghistoryPageState extends State<BookinghistoryPage> {
                         child: Column(
                           children: [
                             Padding(
+                              //user sign in to access reservations history
                               padding: const EdgeInsets.fromLTRB(10, 60, 10, 0),
                               child: TextField(
                                 decoration: buildInputDecoration( Icons.alternate_email ,"Email"),
@@ -105,7 +106,6 @@ class _BookinghistoryPageState extends State<BookinghistoryPage> {
                                         showDialog<void>(
                                           context: context,
                                           barrierDismissible: false,
-                                          // user must tap button!
                                           builder: (BuildContext context) {
 
 
@@ -136,7 +136,7 @@ class _BookinghistoryPageState extends State<BookinghistoryPage> {
                                     }
                                     );
 
-                                    //your  migration to here
+
                                   },
                                   child: const Text('Sign In',
                                     style: TextStyle(
