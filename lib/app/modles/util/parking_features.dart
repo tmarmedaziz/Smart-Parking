@@ -84,13 +84,13 @@ class ResourceApi  extends BaseAPI{
 
    //addvehicule
   Future<http.Response> addvehicule(String vehicleNumber, String vehicleCategory, String vehicleDescription) async {
-    var path = addvehiculepath + userId;
+    var vehiculepath = addvehiculepath + userId;
     var body = jsonEncode({
       'vehicleNumber': vehicleNumber,
       'vehicleCategory': vehicleCategory,
       'vehicleDescription': vehicleDescription,
     });
-    var response = await http.post(Uri.parse(path),headers: super.createProtectedHeader(accessToken), body: body);
+    var response = await http.post(Uri.parse(vehiculepath),headers: super.createProtectedHeader(accessToken), body: body);
     return response;
   }
   //var response1 = SessionManager().get("userId").then((value) {
@@ -99,11 +99,12 @@ class ResourceApi  extends BaseAPI{
   //var uri = super.addvehiculepath + value;
    //addslotreservation
    Future reservationslot(  String  id , String  reservation) async {
+     var reservationpath = addreserveslotpath + userId + "/1/6";
      var body = jsonEncode({
        'id': id,
        'reservation': reservation,
      });
-     var   response = await http.post(Uri.parse(super.reserveslotpath), headers:super.createProtectedHeader(accessToken), body: body);
+     var   response = await http.post(Uri.parse(reservationpath), headers:super.createProtectedHeader(accessToken), body: body);
      return response ;
    }
 }

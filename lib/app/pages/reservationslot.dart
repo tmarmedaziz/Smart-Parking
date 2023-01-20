@@ -12,7 +12,6 @@ class ReserveSlot extends StatefulWidget {
 }
 
 class _ReserveSlotState extends State<ReserveSlot> {
-  //AuthAPI _authAPI = AuthAPI();
   String id ="" ;
   String reservation ="" ;
   @override

@@ -25,16 +25,16 @@ class AuthAPI extends BaseAPI {
 
   }
 //reserveslot
-  Future reservationslot(  String  id , String  reservation) async {
-    var body = jsonEncode({
-      'id': id,
-      'reservation': reservation,
-    });
+  //Future reservationslot(  String  id , String  reservation) async {
+   // var body = jsonEncode({
+   //   'id': id,
+   //   'reservation': reservation,
+   // });
     //var uId;
     //dynamic user = SessionManager().get("userId").then((value) => uId=value);
-    var   response = await http.post(Uri.parse(super.reserveslotpath), headers:super.headers, body: body);
-    return response ;
-  }
+  //  var   response = await http.post(Uri.parse(super.reserveslotpath), headers:super.headers, body: body);
+  //  return response ;
+ // }
 
   //Booking history
   Future<http.Response> BookinghistoryPage(String email, String password) async {
