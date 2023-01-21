@@ -4,7 +4,7 @@ package tn.supcom.models;
 import jakarta.nosql.mapping.Column;
 import jakarta.nosql.mapping.Entity;
 import jakarta.nosql.mapping.Id;
-import tn.supcom.util.Argon2Utility;
+import tn.supcom.util.Argon2Utility
 import tn.supcom.util.FieldPropertyVisibilityStrategy;
 
 import javax.json.bind.annotation.JsonbVisibility;
