@@ -5,6 +5,8 @@ import '../modles/reservation.dart';
 
 
 Widget dashbord2Component(BuildContext context , Color color, Reservation  reservation, ResourceApi resourceApi ) {
+
+
   return Column(
     children: <Widget>[
       Expanded(
@@ -37,7 +39,7 @@ Widget dashbord2Component(BuildContext context , Color color, Reservation  reser
                         style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 10.0
+                            fontSize: 15.0
                         ),
                       ),
                       Text(
@@ -45,7 +47,7 @@ Widget dashbord2Component(BuildContext context , Color color, Reservation  reser
                         style: const  TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 10.0
+                            fontSize: 15.0
                         ),
                       ),
                       Text(
@@ -53,31 +55,18 @@ Widget dashbord2Component(BuildContext context , Color color, Reservation  reser
                         style: const TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 10.0
+                            fontSize: 15.0
                         ),
                       ),
                       Text(
                         "${reservation.slotId}",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 10
+                            fontSize: 15
                         ),
                       ),
-                      Text(
-                        "Timestamp: ",
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10.0
-                        ),
-                      ),
-                      Text(
-                        "${reservation.reservation}",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10
-                        ),
-                      ),
+
+
                     ],
                   ),
                 ),
