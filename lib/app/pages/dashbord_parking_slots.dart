@@ -104,7 +104,12 @@ class _DashbordState extends State<Dashbord> {
                                         color:Colors.blue, borderRadius: BorderRadius.circular(10)),
                                     padding: EdgeInsets.fromLTRB(20.0, 0.05, 10, 0),
                                     child: TextButton(
-                                        onPressed: () { Navigator.pushNamed(context, 'BookinghistoryPage'); },
+                                        onPressed: () { Navigator.pushNamed(
+                                            context, 'dashboard2', arguments: {
+                                          'accessToken': resourceApi.accessToken,
+                                          'refreshToken': resourceApi.refreshToken,
+                                          'userId': resourceApi.userId
+                                        });; },
                                         child: Text(
                                           "Reservations History",
                                           style: TextStyle(color: Colors.white, fontSize: 25),
