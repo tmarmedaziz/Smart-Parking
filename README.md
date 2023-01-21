@@ -33,7 +33,8 @@ Multiple technologies, packages and hardware sensors were used in order to devel
   - IR sensor
   - NFC/RFID reader
   - 12V Raspberry Pi power supply
-![2](https://user-images.githubusercontent.com/80635318/213720751-26384d28-60df-411b-87d1-86fa093a9d0f.PNG) 
+  
+  ![dd](https://user-images.githubusercontent.com/80635318/213831599-5678c95b-d610-46e5-95d3-98d2f38b5353.PNG)
 ## Deployment Server:
 We used our free Microsoft accounts in order to sign in and get 100$ offred by Microsoft Azure. This allowed us to create a virtual machine capable of hosting the Middleware (i.e. **Jakarta EE**), the MQTT Broker (i.e. **Mosquitto**) and handle several requests without delay. The characteristics of the virtual machine are as follow:
 * Ram: 1 GB
@@ -51,6 +52,8 @@ HTTPS was enabled using Let's Encrypt's Certbot, allowing us to verify the owner
 ![imags](https://user-images.githubusercontent.com/80635318/213830879-76435fc4-66d0-45fa-8d14-06947668e2a6.PNG)
 
 ## Further Readings:
-
+You can find more information and take a look at the architecture design with the following documents:
+-  [Design_Document](Design_Document.pdf)
+-  [Scope of statement](Scope%20of%20statement.pdf)
 
 
